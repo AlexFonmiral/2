@@ -9,10 +9,10 @@ vector<vector<string>> v(503, vector<string>(4));
 
 void Sort(int l, int r) {
 	int i = l, j = r;
-	int g = int(v[(l + r) / 2][0]);
+	int g = stoi(v[(l + r) / 2][0]);
 	while (i <= j) {
-		while (int(v[i][0]) < g) i++;
-		while (int(v[j][0]) > g) j--;
+		while (stoi(v[i][0]) < g) i++;
+		while (stoi(v[j][0]) > g) j--;
 		if (i <= j) {
 			swap(v[i][0], v[j][0]);
 			swap(v[i][1], v[j][1]);
@@ -20,8 +20,8 @@ void Sort(int l, int r) {
 			swap(v[i][3], v[j][3]);
 			i++; j--;
 		}
-		if (l < j) Sort(v, l, j);
-		if (i < r) Sort(v, i, r);
+		if (l < j) Sort(l, j);
+		if (i < r) Sort(i, r);
 
 
 	}
@@ -29,7 +29,7 @@ void Sort(int l, int r) {
 }
 int main()
 {
-	setlocale(LC_CTYPE, "Russian");
+	setlocale(LC_ALL, "Russian");
 	//ScientistName#preparation#date#components
 	string ScientistName, preparation, date, components;
 	ifstream f("scientist.txt");
@@ -47,7 +47,7 @@ int main()
 		i++;
 		//cout << v[i][0] << endl;
 	}
-	Sort(1, 500);
+	Sort(1, 501);
 
 	cout << v[1][2] << ": " << v[1][1] << endl;
 	cout << v[2][2] << ": " << v[2][1] << endl;
